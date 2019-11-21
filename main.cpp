@@ -1,31 +1,57 @@
 #include <iostream>
+#include <thread>
+#include <string>
+
 #include <CTIBroadcastWin32Cls.h>
 #include <CTISessionWin32Cls.h>
 #include <CTIECUtilsWin32Cls.h>
 #include <SMCEventCodes.h>
-#include <thread>
-#include <string>
-
-#include <ui/logic/CoreController.hpp>
 
 #include <QQmlEngine>
-#include <Logger.hpp>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include <common/FactoryQml.hpp>
+
+#include <ui/logic/data/ApplicationData.hpp>
+#include <ui/logic/controller/CoreController.hpp>
+
+#include <Logger.hpp>
+#include <Types.hpp>
+
 using namespace std;
-//namespace CT = BroadcastWin32Wrapper;
-//namespace CTS = SessionWin32Wrapper;
 namespace ECU = ECUtilsWin32Wrapper;
 
 
-void test(const char* s) {
-    std::cout << (int) &s;
-    std::cout << (int) s;
-    s = new char[20];
-    std::cout << (long) &s;
-    std::cout << (int) s;
+//void test(const char* s) {
+//    std::cout << (int) &s;
+//    std::cout << (int) s;
+//    s = new char[20];
+//    std::cout << (long) &s;
+//    std::cout << (int) s;
+//}
+
+
+void registerSingletons() {
+
+    traceEnter;
+    using namespace PROGRAM_NAMESPACE;
+    int regCount = 0;
+
+    auto&& factory = FactoryQml::instance();
+
+    regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::CoreController>("Cutter.CoreController", 1, 0, "CoreController", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
+            return FactoryQml::instance().build<PROGRAM_NAMESPACE::CoreController>(qmlEngine, jsEngine);
+    });
+    regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::ApplicationData>("Cutter.ApplicationData", 1, 0, "ApplicationData", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
+            return FactoryQml::instance().build<PROGRAM_NAMESPACE::ApplicationData>(qmlEngine, jsEngine);
+    });
+
+    traceDebug() << "SingleTon registrati: " << regCount;
+    traceExit;
+
 }
+
 
 
 int main(int argc, char** argv) {
@@ -34,17 +60,13 @@ int main(int argc, char** argv) {
 
     traceInfo() << "Cutter started" << endl;
 
-    int res = qmlRegisterSingletonType<CoreController>("Cutter.CoreController", 1, 0, "CoreController", CoreController::qmlInstance);
-//    qmlRegisterType<CoreController>("Cutter.CoreController", 1, 0, "CoreController");
+    registerSingletons();
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("file:///C://Users//nicola//workspace//cutter//src//ui//qml//main.qml")));
 
-    auto&& test = CoreController::qmlInstance(&engine, nullptr);
-
     return app.exec();
-
 
 }
 
@@ -57,8 +79,8 @@ int main2(int argc, char** argv) {
     ECU::ECUtilsWin32 ecUtils;
     SessionWin32Wrapper::SessionWin32 ctSession;
 
-    qmlRegisterSingletonType<CoreController>("Cutter.CoreController", 1, 0, "CoreController",
-                                                                static_cast<QObject*(*)(QQmlEngine*, QJSEngine*)>(&CoreController::qmlInstance));
+//    qmlRegisterSingletonType<PROGRAM_NAMESPACE::CoreController>("Cutter.CoreController", 1, 0, "CoreController",
+//                                                                static_cast<QObject*(*)(QQmlEngine*, QJSEngine*)>(&PROGRAM_NAMESPACE::CoreController::qmlInstance));
 
 //    prova.loginSession("192.168.100.2", "192.168.100.20", 12200, 1000);
     BroadcastWin32Wrapper::BroadcastWin32 sample = BroadcastWin32Wrapper::BroadcastWin32::Instance();

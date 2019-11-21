@@ -1,8 +1,7 @@
 SET(ITEMS
-    main
-    CutConfiguration
-    Settings
-    SystemStatus
+    CutConfigurationController
+    CoreController
+    SettingsController
     )
 
 FOREACH(ITEM ${ITEMS})

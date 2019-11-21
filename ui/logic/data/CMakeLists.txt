@@ -1,8 +1,8 @@
 SET(ITEMS
-    main
-    CutConfiguration
-    Settings
-    SystemStatus
+    ApplicationData
+    CutConfigurationData
+    CoreData
+    SettingsData
     )
 
 FOREACH(ITEM ${ITEMS})

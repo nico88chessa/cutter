@@ -1,6 +1,4 @@
 SET(ITEMS
-    CoreController
-    SettingsController
     )
 
 FOREACH(ITEM ${ITEMS})
@@ -33,12 +31,11 @@ MESSAGE("${CMAKE_CURRENT_SOURCE_DIR}/PROJECT_QML_FILES: ${PROJECT_QML_FILES}")
 MESSAGE("${CMAKE_CURRENT_SOURCE_DIR}/QRC_FILES: ${PROJECT_QRC_FILES}")
 
 SET(SUB_FOLDERS
+    controller
+    data
 )
 
 FOREACH(item ${SUB_FOLDERS})
     MESSAGE("Folder: " ${item})
     ADD_SUBDIRECTORY(${item})
 ENDFOREACH(item)
-
-
-SET(PROJECT_QML_FILES "" CACHE INTERNAL "qml project files")
