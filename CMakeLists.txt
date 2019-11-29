@@ -69,10 +69,16 @@ IF(COMPILER_SUPPORTS_CXX14)
     SET(CMAKE_CXX_STANDARD 14)
 ENDIF()
 
+IF (DEBUG_MODE)
+    MESSAGE("Enable QT_QML_DEBUG Mode")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_QML_DEBUG")
+ENDIF()
+
 IF (NOT MSVC)
     #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-reorder -Wno-long-long -pedantic -Wno-comment -fPIC")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-missing-noreturn -Wno-reorder -Wno-long-long -pedantic -Wno-comment")
 ENDIF(NOT MSVC)
+
 SET(CMAKE_VERBOSE_MAKEFILE TRUE)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 

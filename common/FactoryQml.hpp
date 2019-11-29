@@ -9,7 +9,7 @@
 #include <configure.h>
 
 
-#define DECL_QML_SINGLETON_INSTANCEABLE(Class) \
+#define DECL_QML_SINGLETON_INSTANCEABLE() \
     template <typename T> \
     friend QObject* PROGRAM_NAMESPACE::FactoryQml::build(QQmlEngine*, QJSEngine*);
 

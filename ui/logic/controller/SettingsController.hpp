@@ -14,7 +14,7 @@ namespace PROGRAM_NAMESPACE {
 class SettingsController : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(SettingsController)
-    DECL_QML_SINGLETON_INSTANCEABLE(SettingsController)
+    DECL_QML_SINGLETON_INSTANCEABLE()
 
 private:
     SettingsController(QObject* parent = Q_NULLPTR);

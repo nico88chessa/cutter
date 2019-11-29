@@ -14,7 +14,7 @@ namespace PROGRAM_NAMESPACE {
 class SettingsData : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(SettingsData)
-    DECL_QML_SINGLETON_INSTANCEABLE(SettingsData)
+    DECL_QML_SINGLETON_INSTANCEABLE()
 
 private:
     SettingsData(QObject* parent = Q_NULLPTR);

@@ -14,7 +14,7 @@ namespace PROGRAM_NAMESPACE {
 class ApplicationData : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(ApplicationData)
-    DECL_QML_SINGLETON_INSTANCEABLE(ApplicationData)
+    DECL_QML_SINGLETON_INSTANCEABLE()
 
     Q_PROPERTY(QString pApplicationName READ getApplicationName WRITE setApplicationName NOTIFY applicationNameChanged)
     Q_PROPERTY(QString pApplicationVersion READ getApplicationVersion WRITE setApplicationVersion NOTIFY applicationVersionChanged)

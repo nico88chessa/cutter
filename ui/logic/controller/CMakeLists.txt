@@ -1,5 +1,6 @@
 SET(ITEMS
     CutConfigurationController
+    CoreControllerPrivate
     CoreController
     SettingsController
     )

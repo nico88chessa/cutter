@@ -14,7 +14,7 @@ namespace PROGRAM_NAMESPACE {
 class CutConfigurationController : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(CutConfigurationController)
-    DECL_QML_SINGLETON_INSTANCEABLE(CutConfigurationController)
+    DECL_QML_SINGLETON_INSTANCEABLE()
 
 private:
     CutConfigurationController(QObject* parent = Q_NULLPTR);

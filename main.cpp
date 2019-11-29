@@ -13,6 +13,7 @@
 
 #include <common/FactoryQml.hpp>
 
+#include <ui/logic/data/CoreData.hpp>
 #include <ui/logic/data/ApplicationData.hpp>
 #include <ui/logic/controller/CoreController.hpp>
 
@@ -52,6 +53,23 @@ void registerSingletons() {
 
 }
 
+void registerMetatypes() {
+
+    /* NOTE NIC 18/03/2019 - registrazione tipi custom
+     * qui vanno registrati i tipi custom che devono essere gestiti
+     * dalle connessioni Signal / Slot (soprattutto nel caso di QueueConnection);
+     * non e' necessario registrare i tipi se utilizzati solo come QVariant
+     * ricordarsi di registrare il tipi sia con namespace sia senza
+     * altrimenti le chiamate fatte usando QMetaObject::invokeMethod(...) non funzionano
+     */
+
+    using namespace PROGRAM_NAMESPACE;
+
+    traceEnter;
+
+//    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("MenuItem");
+//    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("cutter::MenuItem");
+}
 
 
 int main(int argc, char** argv) {
@@ -61,6 +79,7 @@ int main(int argc, char** argv) {
     traceInfo() << "Cutter started" << endl;
 
     registerSingletons();
+    registerMetatypes();
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
