@@ -67,6 +67,7 @@ void registerMetatypes() {
 
     traceEnter;
 
+    qmlRegisterUncreatableMetaObject(PROGRAM_NAMESPACE::staticMetaObject, "com.dv", 1, 0, "CutterNS", "Cannot create a namespace object");
 //    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("MenuItem");
 //    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("cutter::MenuItem");
 }

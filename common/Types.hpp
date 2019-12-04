@@ -1,13 +1,26 @@
 #ifndef TYPES_HPP
 #define TYPES_HPP
 
-// type traits
+#include <QObject>
+
 #include <configure.h>
 
 
 namespace PROGRAM_NAMESPACE {
 
+Q_NAMESPACE
+
 using SMCError = unsigned int;
+
+
+enum class MenuKeyType : int {
+    NONE = -1,
+    SETUP,
+    SYSTEM_STATUS,
+    SETTINGS,
+    INFO
+};
+Q_ENUM_NS(MenuKeyType)
 
 }
 

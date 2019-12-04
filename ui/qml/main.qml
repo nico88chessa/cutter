@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import Cutter.CoreController 1.0 as CoreCtrl
 import Cutter.ApplicationData 1.0 as ApplicationData
 import QtQuick.Layouts 1.3
+//import com.dv 1.0
 
 
 ApplicationWindow {
@@ -17,42 +18,79 @@ ApplicationWindow {
 
     GridLayout {
         id: gridLayout
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
         anchors.fill: parent
 
         ListView {
             id: listView
-            width: 110
-            height: 160
+            Layout.minimumWidth: 200
+            Layout.fillHeight: true
             model: CoreCtrl.CoreController.pMenuModel
+            clip: true
 
             delegate: Item {
+                id: itemRow
                 x: 5
-                width: 80
-                height: 40
+                width: listView.width
+                height: 36
+
                 Row {
-                    id: row1
+                    id: row
                     spacing: 10
+                    anchors.fill: parent
 
                     Text {
-                        text: "Ciao - " + pLabel + " - " + pIconPath
-                        anchors.verticalCenter: parent.verticalCenter
+                        id: textRow
+                        text: "Ciao - " + pKeyRole + " - " + pLabelRole
+                        verticalAlignment: Text.AlignVCenter
+                        anchors.top: parent.top
+                        height: parent.height
+                        width: parent.width
                         font.bold: true
+                        color: "red";
                     }
-                }
-            }
-        }
 
-        Button {
-            id: button
-            text: qsTr("Button")
+                }
+                MouseArea {
+                    id: mouseAreaRow
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: { listView.currentIndex = pKeyRole }
+                    onEntered: { textRow.color = "blue" }
+                    onExited: { textRow.color = "red" }
+                }
+
+            }
+
+            onCurrentIndexChanged: { stackLayout.currentIndex = listView.currentIndex }
+            highlightFollowsCurrentItem: true
+            focus: true
+            highlight: Rectangle {
+                radius: 10
+                color: "lightGray"
+                width: parent.width
+                height: 36
+            }
         }
 
         StackLayout {
             id: stackLayout
-            width: 100
-            height: 100
             Layout.fillHeight: true
             Layout.fillWidth: true
+            currentIndex: 0
+
+            Setup {
+                id: setup
+            }
+
+            SystemStatus {
+                id: systemStatus
+            }
+
+
         }
 
 
@@ -79,7 +117,4 @@ ApplicationWindow {
 
 
 
-/*##^## Designer {
-    D{i:1;anchors_height:100;anchors_width:100}
-}
- ##^##*/
+

@@ -1,8 +1,9 @@
 SET(ITEMS
     main
-    CutConfiguration
-    Settings
+    Setup
     SystemStatus
+    Settings
+    Info
     )
 
 UNSET(QML_FILES)

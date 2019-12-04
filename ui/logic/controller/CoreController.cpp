@@ -11,25 +11,21 @@ using namespace PROGRAM_NAMESPACE;
  * MENU ITEM
  */
 
-MenuItem::MenuItem() : MenuItem("", "") { }
+MenuItem::MenuItem() : MenuItem("", MenuKeyType::NONE) { }
 
-MenuItem::MenuItem(const QString& label, const QString& iconPath) :
-    label(label), iconPath(iconPath) {
+MenuItem::MenuItem(const QString& label, MenuKeyType key) :
+    label(label), key(key) {
 
     traceEnter;
     traceExit;
 
 }
 
-QString MenuItem::getIconPath() const { return iconPath; }
-
-void MenuItem::setIconPath(const QString& value) { iconPath = value; }
-
-QString MenuItem::getLabel() const {
-    return label;
-}
-
+QString MenuItem::getLabel() const { return label; }
 void MenuItem::setLabel(const QString& value) { label = value; }
+
+MenuKeyType MenuItem::getKey() const { return key; }
+void MenuItem::setKey(const MenuKeyType& value) { key = value; }
 
 
 
@@ -52,7 +48,7 @@ QVariant MenuListModel::data(const QModelIndex& index, int role) const {
     const MenuItem& bean = items.at(index.row());
     switch (role) {
     case LABEL_ROLE: return bean.getLabel();
-    case ICON_ROLE: return bean.getIconPath();
+    case KEY_ROLE: return QVariant::fromValue<MenuKeyType>(bean.getKey());
     default: return QVariant();
 
     }
@@ -76,8 +72,8 @@ QHash<int, QByteArray> MenuListModel::roleNames() const {
     traceEnter;
 
     QHash<int, QByteArray> roles;
-    roles[LABEL_ROLE] = "pLabel";
-    roles[ICON_ROLE] = "pIconPath";
+    roles[LABEL_ROLE] = "pLabelRole";
+    roles[KEY_ROLE] = "pKeyRole";
 
     traceExit;
     return roles;
@@ -92,10 +88,10 @@ QHash<int, QByteArray> MenuListModel::roleNames() const {
 CoreControllerPrivate::CoreControllerPrivate(QObject* parent) : QObject(parent), model(new MenuListModel()) {
 
     traceEnter;
-    model->appendData(MenuItem("uno", "uno"));
-    model->appendData(MenuItem("due", "due"));
-    model->appendData(MenuItem("tre", "tre"));
-    model->appendData(MenuItem("quattro", "quattro"));
+    model->appendData(MenuItem("uno", MenuKeyType::SETUP));
+    model->appendData(MenuItem("due", MenuKeyType::SYSTEM_STATUS));
+    model->appendData(MenuItem("tre", MenuKeyType::SETTINGS));
+    model->appendData(MenuItem("quattro", MenuKeyType::INFO));
     traceExit;
 
 }

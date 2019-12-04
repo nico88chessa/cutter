@@ -6,7 +6,7 @@
 #include <QQmlEngine>
 
 #include <configure.h>
-
+#include <Types.hpp>
 
 namespace PROGRAM_NAMESPACE {
 
@@ -15,22 +15,20 @@ class CoreController;
 class MenuItem {
     Q_GADGET
     Q_PROPERTY(QString pLabel READ getLabel WRITE setLabel)
-    Q_PROPERTY(QString pIconPath READ getIconPath WRITE setIconPath)
-
+    Q_PROPERTY(MenuKeyType pKey READ getKey WRITE setKey)
 
 private:
     QString label;
-    QString iconPath;
+    MenuKeyType key;
 
 public:
     MenuItem();
-    MenuItem(const QString& label, const QString& iconPath);
+    MenuItem(const QString& label, MenuKeyType key);
 
-public slots:
+    MenuKeyType getKey() const;
+    void setKey(const MenuKeyType& value);
     QString getLabel() const;
     void setLabel(const QString& value);
-    QString getIconPath() const;
-    void setIconPath(const QString& value);
 
 };
 
@@ -43,7 +41,7 @@ private:
 
     enum MenuRoles {
         LABEL_ROLE = Qt::UserRole + 1,
-        ICON_ROLE
+        KEY_ROLE
     };
 
 public:
