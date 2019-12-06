@@ -12,10 +12,12 @@
 #include <QQmlApplicationEngine>
 
 #include <common/FactoryQml.hpp>
+#include <common/MathUtils.hpp>
 
 #include <ui/logic/data/CoreData.hpp>
 #include <ui/logic/data/ApplicationData.hpp>
 #include <ui/logic/controller/CoreController.hpp>
+#include <ui/logic/controller/SetupController.hpp>
 
 #include <Logger.hpp>
 #include <Types.hpp>
@@ -47,8 +49,23 @@ void registerSingletons() {
     regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::ApplicationData>("Cutter.ApplicationData", 1, 0, "ApplicationData", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
             return FactoryQml::instance().build<PROGRAM_NAMESPACE::ApplicationData>(qmlEngine, jsEngine);
     });
+    regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::SetupController>("Cutter.SetupController", 1, 0, "SetupController", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
+            return FactoryQml::instance().build<PROGRAM_NAMESPACE::SetupController>(qmlEngine, jsEngine);
+    });
+
 
     traceDebug() << "SingleTon registrati: " << regCount;
+    traceExit;
+
+}
+
+void registerQMLMetatypes() {
+
+    using namespace PROGRAM_NAMESPACE;
+
+    traceEnter;
+    qmlRegisterUncreatableMetaObject(PROGRAM_NAMESPACE::staticMetaObject, "com.dv", 1, 0, "CutterNS", "Cannot create a namespace object");
+
     traceExit;
 
 }
@@ -67,7 +84,12 @@ void registerMetatypes() {
 
     traceEnter;
 
-    qmlRegisterUncreatableMetaObject(PROGRAM_NAMESPACE::staticMetaObject, "com.dv", 1, 0, "CutterNS", "Cannot create a namespace object");
+    qRegisterMetaType<PROGRAM_NAMESPACE::real>("cutter::real");
+    qRegisterMetaType<real>("real");
+    qRegisterMetaType<PROGRAM_NAMESPACE::realHP>("cutter::realHP");
+    qRegisterMetaType<realHP>("realHP");
+    qRegisterMetaType<PROGRAM_NAMESPACE::SMCError>("cutter::SMCError");
+    qRegisterMetaType<SMCError>("SMCError");
 //    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("MenuItem");
 //    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("cutter::MenuItem");
 }
@@ -80,7 +102,11 @@ int main(int argc, char** argv) {
     traceInfo() << "Cutter started" << endl;
 
     registerSingletons();
+    registerQMLMetatypes();
     registerMetatypes();
+
+    //MathUtils::almostEqual(10, 10);
+    //MathUtils::almostEqual(10.0, 10.0);
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;

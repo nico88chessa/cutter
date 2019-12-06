@@ -3,6 +3,7 @@ SET(ITEMS
     CutConfigurationData
     CoreData
     SettingsData
+    SetupData
     )
 
 UNSET(QML_FILES)

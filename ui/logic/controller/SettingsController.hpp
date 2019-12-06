@@ -16,6 +16,10 @@ class SettingsController : public QObject {
     Q_DISABLE_COPY(SettingsController)
     DECL_QML_SINGLETON_INSTANCEABLE()
 
+public:
+    using Ptr = SettingsController*;
+    using ConstPtr = const SettingsController*;
+
 private:
     SettingsController(QObject* parent = Q_NULLPTR);
 

@@ -4,6 +4,7 @@ SET(ITEMS
     Settings
     Types
     FactoryQml
+    MathUtils
     )
 
 UNSET(QML_FILES)

@@ -88,10 +88,10 @@ QHash<int, QByteArray> MenuListModel::roleNames() const {
 CoreControllerPrivate::CoreControllerPrivate(QObject* parent) : QObject(parent), model(new MenuListModel()) {
 
     traceEnter;
-    model->appendData(MenuItem("uno", MenuKeyType::SETUP));
-    model->appendData(MenuItem("due", MenuKeyType::SYSTEM_STATUS));
-    model->appendData(MenuItem("tre", MenuKeyType::SETTINGS));
-    model->appendData(MenuItem("quattro", MenuKeyType::INFO));
+    model->appendData(MenuItem("SETUP", MenuKeyType::SETUP));
+    model->appendData(MenuItem("SYSTEM STATUS", MenuKeyType::SYSTEM_STATUS));
+    model->appendData(MenuItem("SETTINGS", MenuKeyType::SETTINGS));
+    model->appendData(MenuItem("INFO", MenuKeyType::INFO));
     traceExit;
 
 }

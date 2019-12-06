@@ -1,5 +1,5 @@
 SET(ITEMS
-    CutConfigurationController
+    SetupController
     CoreControllerPrivate
     CoreController
     SettingsController

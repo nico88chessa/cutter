@@ -11,7 +11,8 @@ namespace PROGRAM_NAMESPACE {
 Q_NAMESPACE
 
 using SMCError = unsigned int;
-
+using real = float;
+using realHP = double;
 
 enum class MenuKeyType : int {
     NONE = -1,

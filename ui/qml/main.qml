@@ -4,7 +4,8 @@ import QtQuick.Controls 2.12
 import Cutter.CoreController 1.0 as CoreCtrl
 import Cutter.ApplicationData 1.0 as ApplicationData
 import QtQuick.Layouts 1.3
-//import com.dv 1.0
+
+//import com.dv 1.0 // obbligato ad importarla in caso di uso ENUM
 
 
 ApplicationWindow {
@@ -12,6 +13,8 @@ ApplicationWindow {
     width: 1024
     height: 768
     opacity: 1
+    minimumWidth: 800
+    minimumHeight: 600
 
     visible: true
     title: ApplicationData.ApplicationData.pApplicationName + " - " + ApplicationData.ApplicationData.pApplicationVersion
@@ -31,36 +34,39 @@ ApplicationWindow {
             model: CoreCtrl.CoreController.pMenuModel
             clip: true
 
-            delegate: Item {
+            delegate: Row {
                 id: itemRow
-                x: 5
                 width: listView.width
                 height: 36
+                spacing: 10
 
-                Row {
-                    id: row
-                    spacing: 10
-                    anchors.fill: parent
+                Text {
+                    leftPadding: 10
+                    rightPadding: leftPadding
+                    id: textRow
+                    text: pLabelRole /*+ " - " + CutterNS.NONE*/
+                    font.pointSize: 14
+                    verticalAlignment: Text.AlignVCenter
+                    height: parent.height
+                    width: parent.width
 
-                    Text {
-                        id: textRow
-                        text: "Ciao - " + pKeyRole + " - " + pLabelRole
-                        verticalAlignment: Text.AlignVCenter
-                        anchors.top: parent.top
-                        height: parent.height
-                        width: parent.width
-                        font.bold: true
-                        color: "red";
+                    Rectangle {
+                        id: textRect
+                        anchors.fill: parent
+                        anchors.left: parent.left
+                        color: "transparent"
+                        radius: 10
                     }
 
-                }
-                MouseArea {
-                    id: mouseAreaRow
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: { listView.currentIndex = pKeyRole }
-                    onEntered: { textRow.color = "blue" }
-                    onExited: { textRow.color = "red" }
+                    MouseArea {
+                        id: mouseAreaRow
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: { listView.currentIndex = pKeyRole }
+                        onEntered: { textRect.color = "#600000FF" }
+                        onExited: { textRect.color = "transparent" }
+                    }
+
                 }
 
             }
@@ -69,6 +75,7 @@ ApplicationWindow {
             highlightFollowsCurrentItem: true
             focus: true
             highlight: Rectangle {
+                id: hRect
                 radius: 10
                 color: "lightGray"
                 width: parent.width
@@ -82,8 +89,11 @@ ApplicationWindow {
             Layout.fillWidth: true
             currentIndex: 0
 
-            Setup {
-                id: setup
+            Item {
+                width: parent.width
+                Setup {
+                    id: setup
+                }
             }
 
             SystemStatus {
@@ -100,21 +110,3 @@ ApplicationWindow {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
