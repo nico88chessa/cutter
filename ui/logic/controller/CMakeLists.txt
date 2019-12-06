@@ -3,6 +3,7 @@ SET(ITEMS
     CoreControllerPrivate
     CoreController
     SettingsController
+    SystemStatusController
     )
 
 UNSET(QML_FILES)

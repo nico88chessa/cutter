@@ -4,6 +4,7 @@ SET(ITEMS
     CoreData
     SettingsData
     SetupData
+    SystemStatusData
     )
 
 UNSET(QML_FILES)

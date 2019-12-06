@@ -26,9 +26,10 @@ public:
     using ConstPtr = const SetupController*;
 
 private:
-    explicit SetupController(QObject* parent = Q_NULLPTR);
-
     QScopedPointer<SetupData> data;
+
+private:
+    explicit SetupController(QObject* parent = Q_NULLPTR);
 
 public:
     ~SetupController();
