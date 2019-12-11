@@ -13,8 +13,8 @@ ApplicationWindow {
     width: 1024
     height: 768
     opacity: 1
-    minimumWidth: 800
-    minimumHeight: 600
+    minimumWidth: 1024
+    minimumHeight: 768
 
     visible: true
     title: ApplicationData.ApplicationData.pApplicationName + " - " + ApplicationData.ApplicationData.pApplicationVersion
@@ -90,14 +90,21 @@ ApplicationWindow {
             currentIndex: 0
 
             Item {
-                width: parent.width
+                id: iSetup
+                anchors.fill: parent
                 Setup {
                     id: setup
                 }
             }
 
-            SystemStatus {
-                id: systemStatus
+            Item {
+                id: iStatus
+                anchors.fill: parent
+
+                SystemStatus {
+                    id: systemStatus
+                    anchors.fill: parent
+                }
             }
 
 
@@ -110,3 +117,8 @@ ApplicationWindow {
 
 
 }
+
+/*##^## Designer {
+    D{i:9;anchors_width:799}D{i:12;anchors_x:0;anchors_y:0}D{i:11;anchors_height:200;anchors_width:200}
+}
+ ##^##*/

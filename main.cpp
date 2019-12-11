@@ -18,6 +18,7 @@
 #include <ui/logic/data/ApplicationData.hpp>
 #include <ui/logic/controller/CoreController.hpp>
 #include <ui/logic/controller/SetupController.hpp>
+#include <ui/logic/controller/SystemStatusController.hpp>
 
 #include <Logger.hpp>
 #include <Types.hpp>
@@ -51,6 +52,9 @@ void registerSingletons() {
     });
     regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::SetupController>("Cutter.SetupController", 1, 0, "SetupController", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
             return FactoryQml::instance().build<PROGRAM_NAMESPACE::SetupController>(qmlEngine, jsEngine);
+    });
+    regCount += qmlRegisterSingletonType<PROGRAM_NAMESPACE::SystemStatusController>("Cutter.SystemStatusController", 1, 0, "SystemStatusController", [](QQmlEngine* qmlEngine, QJSEngine* jsEngine) -> QObject* {
+            return FactoryQml::instance().build<PROGRAM_NAMESPACE::SystemStatusController>(qmlEngine, jsEngine);
     });
 
 

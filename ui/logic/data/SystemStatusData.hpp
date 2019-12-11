@@ -46,7 +46,7 @@ class SystemStatusData : public QObject {
     Q_PROPERTY(bool xPower READ getXPower WRITE setXPower NOTIFY smcStatusUpdate)
     Q_PROPERTY(bool yPower READ getYPower WRITE setYPower NOTIFY smcStatusUpdate)
     Q_PROPERTY(int interlock READ getInterlock WRITE setInterlock NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int currentDIO READ getCurrentDIO WRITE setCurrentDIO NOTIFY smcStatusUpdate)
+
     Q_PROPERTY(int jobMarker READ getJobMarker WRITE setJobMarker NOTIFY smcStatusUpdate)
     Q_PROPERTY(int jobDataCntr READ getJobDataCntr WRITE setJobDataCntr NOTIFY smcStatusUpdate)
 
@@ -95,7 +95,26 @@ private:
     bool xPower;
     bool yPower;
     int interlock;
-    int currentDIO;
+
+    bool auxGPI1;
+    bool auxGPI2;
+    bool auxGPI3;
+    bool auxGPI4;
+    bool auxStart;
+    bool start;
+    bool interlock1;
+    bool interlock2;
+    bool interlock3;
+    bool interlock4;
+    bool auxGPO1;
+    bool auxGPO2;
+    bool auxGPO3;
+    bool auxGPO4;
+    bool jobactive;
+    bool errorNready;
+    bool busy;
+    bool lasing;
+
     int jobMarker;
     int jobDataCntr;
 
@@ -202,14 +221,65 @@ public:
     int getInterlock() const;
     void setInterlock(int value);
 
-    int getCurrentDIO() const;
-    void setCurrentDIO(int value);
-
     int getJobMarker() const;
     void setJobMarker(int value);
 
     int getJobDataCntr() const;
     void setJobDataCntr(int value);
+
+    bool getAuxGPI1() const;
+    void setAuxGPI1(bool value);
+
+    bool getAuxGPI2() const;
+    void setAuxGPI2(bool value);
+
+    bool getAuxGPI3() const;
+    void setAuxGPI3(bool value);
+
+    bool getAuxGPI4() const;
+    void setAuxGPI4(bool value);
+
+    bool getAuxStart() const;
+    void setAuxStart(bool value);
+
+    bool getStart() const;
+    void setStart(bool value);
+
+    bool getInterlock1() const;
+    void setInterlock1(bool value);
+
+    bool getInterlock2() const;
+    void setInterlock2(bool value);
+
+    bool getInterlock3() const;
+    void setInterlock3(bool value);
+
+    bool getInterlock4() const;
+    void setInterlock4(bool value);
+
+    bool getAuxGPO1() const;
+    void setAuxGPO1(bool value);
+
+    bool getAuxGPO2() const;
+    void setAuxGPO2(bool value);
+
+    bool getAuxGPO3() const;
+    void setAuxGPO3(bool value);
+
+    bool getAuxGPO4() const;
+    void setAuxGPO4(bool value);
+
+    bool getJobactive() const;
+    void setJobactive(bool value);
+
+    bool getErrorNready() const;
+    void setErrorNready(bool value);
+
+    bool getBusy() const;
+    void setBusy(bool value);
+
+    bool getLasing() const;
+    void setLasing(bool value);
 
 signals:
     void smcStatusUpdate();
