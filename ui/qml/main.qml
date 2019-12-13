@@ -19,6 +19,10 @@ ApplicationWindow {
     visible: true
     title: ApplicationData.ApplicationData.pApplicationName + " - " + ApplicationData.ApplicationData.pApplicationVersion
 
+    onClosing: {
+        CoreCtrl.CoreController.close();
+    }
+
     GridLayout {
         id: gridLayout
         anchors.rightMargin: 10

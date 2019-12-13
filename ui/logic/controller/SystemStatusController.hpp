@@ -1,6 +1,7 @@
 #ifndef SYSTEMSTATUSCONTROLLER_HPP
 #define SYSTEMSTATUSCONTROLLER_HPP
 
+#include <CambridgeStatusData.hpp>
 #include <QAbstractListModel>
 #include <QObject>
 #include <QQmlEngine>
@@ -30,10 +31,17 @@ private:
 
 private:
     explicit SystemStatusController(QObject* parent = Q_NULLPTR);
+    void setupSignalsAndSlots();
 
 public:
     ~SystemStatusController();
     SystemStatusData* getData() const;
+
+public slots:
+    void initQML();
+
+private slots:
+    void updateStatus(const CambridgeStatusData& status);
 };
 
 

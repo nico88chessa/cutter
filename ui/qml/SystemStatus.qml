@@ -7,7 +7,12 @@ import QtQuick.Window 2.10
 
 Pane {
 
+    Component.onCompleted: {
+        SystemStatusCtrl.SystemStatusController.initQML();
+    }
+
     GridLayout {
+
         id: gridLayout
         columns: 1
         anchors.fill: parent
@@ -25,13 +30,13 @@ Pane {
             }
 
             TabButton {
-                id: tButStatus
-                text: qsTr("Status")
+                id: tButSystem
+                text: qsTr("System")
             }
 
             TabButton {
-                id: tButSystem
-                text: qsTr("System")
+                id: tButStatus
+                text: qsTr("Status")
             }
         }
 
@@ -48,7 +53,6 @@ Pane {
             Frame {
                 background: Rectangle {
                     border.width: 0
-                    color: transparent
                 }
 
                 id: frIO
@@ -93,8 +97,9 @@ Pane {
                                 id: rectAuxGPI1
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPI1 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -126,8 +131,9 @@ Pane {
                                 id: rectAuxGPI2
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPI2 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -159,8 +165,9 @@ Pane {
                                 id: rectAuxGPI3
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPI3 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -190,8 +197,9 @@ Pane {
                                 id: rectAuxGPI4
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPI4 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -221,8 +229,9 @@ Pane {
                                 id: rectAuxStart
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxStart ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -252,8 +261,9 @@ Pane {
                                 id: rectStart
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pStart ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -283,8 +293,9 @@ Pane {
                                 id: rectInterlock1
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pInterlock1 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -314,8 +325,9 @@ Pane {
                                 id: rectInterlock2
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pInterlock2 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -345,8 +357,9 @@ Pane {
                                 id: rectInterlock3
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pInterlock3 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -376,8 +389,9 @@ Pane {
                                 id: rectInterlock4
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pInterlock4 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -407,8 +421,9 @@ Pane {
                                 id: rectAuxGPO1
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPO1 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -438,8 +453,9 @@ Pane {
                                 id: rectAuxGPO2
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPO2 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -469,8 +485,9 @@ Pane {
                                 id: rectAuxGPO3
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPO3 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -500,8 +517,9 @@ Pane {
                                 id: rectAuxGPO4
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pAuxGPO4 ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -531,8 +549,9 @@ Pane {
                                 id: rectJobactive
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pJobActive ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -562,8 +581,9 @@ Pane {
                                 id: rectErrorNready
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pErrorNready ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -593,8 +613,9 @@ Pane {
                                 id: rectBusy
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pBusy ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -624,8 +645,9 @@ Pane {
                                 id: rectLasing
                                 width: 30
                                 height: 30
-                                color: "#ff0000"
+                                color: SystemStatusCtrl.SystemStatusController.pData.pLasing ? "#03a9f4" : "#00000000"
                                 radius: 15
+                                border.width: 2
                             }
 
                         }
@@ -645,12 +667,12 @@ Pane {
                 }
             }
 
+
             Frame {
                 background: Rectangle {
                     border.width: 0
-                    color: transparent
                 }
-                id: frStatus
+                id: frSystem
                 width: 200
                 height: 200
                 padding: 0
@@ -684,7 +706,7 @@ Pane {
 
                             TextField {
                                 id: tfMSN
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pMsn
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -713,7 +735,7 @@ Pane {
 
                             TextField {
                                 id: tfPVer
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pPVer
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -742,7 +764,7 @@ Pane {
 
                             TextField {
                                 id: tfAVer
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pAVer
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -771,7 +793,7 @@ Pane {
 
                             TextField {
                                 id: tfObjExtVer
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pObjextVer
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -800,7 +822,7 @@ Pane {
 
                             TextField {
                                 id: tfFPGAFirmVer
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pFpgaFirmVer
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -829,7 +851,7 @@ Pane {
 
                             TextField {
                                 id: tfStateCode
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pStateCode
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -858,7 +880,7 @@ Pane {
 
                             TextField {
                                 id: tfLastError
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pLastError
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -887,7 +909,7 @@ Pane {
 
                             TextField {
                                 id: tfFreeTempStorage
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pFreeTempStorage
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -916,7 +938,7 @@ Pane {
 
                             TextField {
                                 id: tfPermStoragePath
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pPermStoragePath
                                 Layout.preferredWidth: 160
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
@@ -945,7 +967,7 @@ Pane {
 
                             TextField {
                                 id: tfFreePermStorage
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pFreePermStorage
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -974,7 +996,7 @@ Pane {
 
                             TextField {
                                 id: tfFreeUSBStorage
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pFreeUsbStorage
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1003,7 +1025,7 @@ Pane {
 
                             TextField {
                                 id: tfMAC
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pMac
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1032,7 +1054,7 @@ Pane {
 
                             TextField {
                                 id: tfNetMask
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pNetmask
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1061,7 +1083,7 @@ Pane {
 
                             TextField {
                                 id: tfNetAssign
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pNetassign
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1090,7 +1112,7 @@ Pane {
 
                             TextField {
                                 id: tfIP
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pIp
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1119,7 +1141,7 @@ Pane {
 
                             TextField {
                                 id: tfConnectIP
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pConnectIp
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1148,7 +1170,7 @@ Pane {
 
                             TextField {
                                 id: tfFriendlyName
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pFriendlyName
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1177,7 +1199,7 @@ Pane {
 
                             TextField {
                                 id: tfConnectJob
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pConnectJob
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1206,7 +1228,7 @@ Pane {
 
                             TextField {
                                 id: tfPort
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pPort
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1235,7 +1257,7 @@ Pane {
 
                             TextField {
                                 id: tfHSN
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pHsn
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1255,13 +1277,11 @@ Pane {
 
                 }
             }
-
             Frame {
                 background: Rectangle {
                     border.width: 0
-                    color: transparent
                 }
-                id: frSystem
+                id: frStatus
                 width: 200
                 height: 200
                 Layout.fillHeight: true
@@ -1298,7 +1318,7 @@ Pane {
 
                             TextField {
                                 id: tfXPosAck
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXPosAck ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1327,7 +1347,7 @@ Pane {
 
                             TextField {
                                 id: tfYPosAck
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYPosAck ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1356,7 +1376,7 @@ Pane {
 
                             TextField {
                                 id: tfXpos
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXPos
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1385,7 +1405,7 @@ Pane {
 
                             TextField {
                                 id: tfYpos
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYPos
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1414,7 +1434,7 @@ Pane {
 
                             TextField {
                                 id: tfXActPos
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXActPos
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1443,7 +1463,7 @@ Pane {
 
                             TextField {
                                 id: tfYActPos
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYActPos
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1472,7 +1492,7 @@ Pane {
 
                             TextField {
                                 id: tfXTemp
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXTemp ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1501,7 +1521,7 @@ Pane {
 
                             TextField {
                                 id: tfYTemp
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYTemp ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1530,7 +1550,7 @@ Pane {
 
                             TextField {
                                 id: tfContrlTemp
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pContrlTemp
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1559,7 +1579,7 @@ Pane {
 
                             TextField {
                                 id: tfXStatus
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXStatus
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1588,7 +1608,7 @@ Pane {
 
                             TextField {
                                 id: tfYStatus
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYStatus
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1617,7 +1637,7 @@ Pane {
 
                             TextField {
                                 id: tfXPower
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXPower ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1646,7 +1666,7 @@ Pane {
 
                             TextField {
                                 id: tfYPower
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYPower ? "TRUE" : "FALSE"
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1675,7 +1695,7 @@ Pane {
 
                             TextField {
                                 id: tfInterlock
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pInterlock
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1733,7 +1753,7 @@ Pane {
 
                             TextField {
                                 id: tfJobMarker
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pJobMarker
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1762,7 +1782,7 @@ Pane {
 
                             TextField {
                                 id: tfJobDataCntr
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pJobDataCntr
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1797,8 +1817,6 @@ Pane {
 
 
 /*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}D{i:85;anchors_height:100;anchors_width:100}
-D{i:169;anchors_height:100;anchors_width:100}D{i:167;anchors_height:200;anchors_width:200}
-D{i:6;anchors_height:100;anchors_width:100;anchors_x:63;anchors_y:94}D{i:1;anchors_height:100;anchors_width:100}
+    D{i:0;autoSize:true;height:480;width:640}
 }
  ##^##*/

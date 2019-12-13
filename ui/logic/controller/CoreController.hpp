@@ -33,6 +33,9 @@ private:
     CoreControllerPrivate* dPtr;
 
 public slots:
+
+    void close();
+
     MenuListModel* getMenuModel() const;
 
 public:

@@ -1,10 +1,14 @@
 #include "SetupData.hpp"
 
 #include <MathUtils.hpp>
+#include <Logger.hpp>
 
 using namespace PROGRAM_NAMESPACE;
 
 SetupData::SetupData(QObject* parent) : QObject(parent) {
+
+    traceEnter;
+    traceExit;
 
 }
 

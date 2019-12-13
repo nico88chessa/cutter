@@ -1,6 +1,8 @@
 #include "CoreController.hpp"
 #include "CoreControllerPrivate.hpp"
 
+
+#include <device/DeviceFactory.hpp>
 #include <Logger.hpp>
 
 
@@ -116,6 +118,18 @@ CoreController::CoreController(QObject* parent) : QObject(parent), dPtr(new Core
 
     qRegisterMetaType<MenuListModel*>("MenuListModel*");
     qRegisterMetaType<PROGRAM_NAMESPACE::MenuListModel*>("cutter::MenuListModel*");
+
+    DeviceFactory::instance();
+
+
+    traceExit;
+
+}
+
+void CoreController::close() {
+
+    traceEnter;
+    DeviceFactory::instance().stop();
     traceExit;
 
 }

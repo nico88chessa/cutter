@@ -16,6 +16,7 @@
 
 #include <ui/logic/data/CoreData.hpp>
 #include <ui/logic/data/ApplicationData.hpp>
+#include <device/CambridgeStatusData.hpp>
 #include <ui/logic/controller/CoreController.hpp>
 #include <ui/logic/controller/SetupController.hpp>
 #include <ui/logic/controller/SystemStatusController.hpp>
@@ -27,19 +28,20 @@ using namespace std;
 namespace ECU = ECUtilsWin32Wrapper;
 
 
-//void test(const char* s) {
+void test(const char*& s) {
 //    std::cout << (int) &s;
 //    std::cout << (int) s;
 //    s = new char[20];
 //    std::cout << (long) &s;
 //    std::cout << (int) s;
-//}
+}
 
 
 void registerSingletons() {
 
-    traceEnter;
     using namespace PROGRAM_NAMESPACE;
+
+    traceEnter;
     int regCount = 0;
 
     auto&& factory = FactoryQml::instance();
@@ -94,8 +96,8 @@ void registerMetatypes() {
     qRegisterMetaType<realHP>("realHP");
     qRegisterMetaType<PROGRAM_NAMESPACE::SMCError>("cutter::SMCError");
     qRegisterMetaType<SMCError>("SMCError");
-//    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("MenuItem");
-//    qRegisterMetaType<PROGRAM_NAMESPACE::MenuItem>("cutter::MenuItem");
+    qRegisterMetaType<PROGRAM_NAMESPACE::CambridgeStatusData>("cutter::CambridgeStatusData");
+    qRegisterMetaType<CambridgeStatusData>("CambridgeStatusData");
 }
 
 
@@ -103,12 +105,14 @@ int main(int argc, char** argv) {
 
     using namespace PROGRAM_NAMESPACE;
 
-    traceInfo() << "Cutter started" << endl;
+    traceInfo() << "Cutter started";
 
     registerSingletons();
     registerQMLMetatypes();
     registerMetatypes();
 
+//    const char* prova = nullptr;
+//    test(prova);
     //MathUtils::almostEqual(10, 10);
     //MathUtils::almostEqual(10.0, 10.0);
 

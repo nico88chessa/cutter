@@ -1,5 +1,9 @@
 #include "SystemStatusData.hpp"
 
+#include <CambridgeStatusData.hpp>
+#include <Types.hpp>
+#include <Logger.hpp>
+
 using namespace PROGRAM_NAMESPACE;
 
 SystemStatusData::SystemStatusData(QObject* parent) :
@@ -8,6 +12,75 @@ SystemStatusData::SystemStatusData(QObject* parent) :
 bool SystemStatusData::getLasing() const { return lasing; }
 
 void SystemStatusData::setLasing(bool value) { lasing = value; }
+
+void SystemStatusData::updateCambridgeStatus(const CambridgeStatusData& status) {
+
+    traceEnter;
+
+    this->setMsn(status.getMsn());
+    this->setPVer(status.getPVer());
+    this->setAVer(status.getAVer());
+    this->setObjextVer(status.getObjextVer());
+    this->setFpgaFirmVer(status.getFpgaFirmVer());
+    this->setStateCode(status.getStateCode());
+    this->setLastError(status.getLastError());
+    this->setFreeTempStorage(status.getFreeTempStorage());
+    this->setPermStoragePath(status.getPermStoragePath());
+    this->setFreePermStorage(status.getFreePermStorage());
+    this->setFreeUsbStorage(status.getFreeUsbStorage());
+    this->setMac(status.getMac());
+    this->setNetmask(status.getNetmask());
+    this->setNetassign(status.getNetassign());
+    this->setIp(status.getIp());
+    this->setConnectIp(status.getConnectIp());
+    this->setFriendlyName(status.getFriendlyName());
+    this->setConnectJob(status.getConnectJob());
+    this->setPort(status.getPort());
+    this->setHsn(status.getHsn());
+
+    this->setXPosAck(status.getXPosAck());
+    this->setYPosAck(status.getYPosAck());
+    this->setXPos(status.getXPos());
+    this->setYPos(status.getYPos());
+    this->setXActPos(status.getXActPos());
+    this->setYActPos(status.getYActPos());
+    this->setXTemp(status.getXTemp());
+    this->setYTemp(status.getYTemp());
+    this->setContrlTemp(status.getContrlTemp());
+    this->setXStatus(status.getXStatus());
+    this->setYStatus(status.getYStatus());
+    this->setXPower(status.getXPower());
+    this->setYPower(status.getYPower());
+    this->setInterlock(status.getInterlock());
+    this->setJobMarker(status.getJobMarker());
+    this->setJobDataCntr(status.getJobDataCntr());
+
+    int currentIO = status.getCurrentDIO();
+
+    this->setAuxGPI1((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPI1)) >> static_cast<int>(CurrentDIO_Order::AUX_GPI1));
+    this->setAuxGPI2((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPI2)) >> static_cast<int>(CurrentDIO_Order::AUX_GPI2));
+    this->setAuxGPI3((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPI3)) >> static_cast<int>(CurrentDIO_Order::AUX_GPI3));
+    this->setAuxGPI4((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPI4)) >> static_cast<int>(CurrentDIO_Order::AUX_GPI4));
+    this->setAuxStart((currentIO &static_cast<int>(CurrentDIO_Mask::AUX_START)) >> static_cast<int>(CurrentDIO_Order::AUX_START));
+    this->setStart((currentIO & static_cast<int>(CurrentDIO_Mask::START)) >> static_cast<int>(CurrentDIO_Order::START));
+    this->setInterlock1((currentIO & static_cast<int>(CurrentDIO_Mask::INTERLOCK1)) >> static_cast<int>(CurrentDIO_Order::INTERLOCK1));
+    this->setInterlock2((currentIO & static_cast<int>(CurrentDIO_Mask::INTERLOCK2)) >> static_cast<int>(CurrentDIO_Order::INTERLOCK2));
+    this->setInterlock3((currentIO & static_cast<int>(CurrentDIO_Mask::INTERLOCK3)) >> static_cast<int>(CurrentDIO_Order::INTERLOCK3));
+    this->setInterlock4((currentIO & static_cast<int>(CurrentDIO_Mask::INTERLOCK4)) >> static_cast<int>(CurrentDIO_Order::INTERLOCK4));
+    this->setAuxGPO1((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPO1)) >> static_cast<int>(CurrentDIO_Order::AUX_GPO1));
+    this->setAuxGPO2((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPO2)) >> static_cast<int>(CurrentDIO_Order::AUX_GPO2));
+    this->setAuxGPO3((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPO3)) >> static_cast<int>(CurrentDIO_Order::AUX_GPO3));
+    this->setAuxGPO4((currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPO4)) >> static_cast<int>(CurrentDIO_Order::AUX_GPO4));
+    this->setJobactive((currentIO &static_cast<int>(CurrentDIO_Mask::JOBACTIVE)) >> static_cast<int>(CurrentDIO_Order::JOBACTIVE));
+    this->setErrorNready((currentIO & static_cast<int>(CurrentDIO_Mask::ERROR_NREADY)) >> static_cast<int>(CurrentDIO_Order::ERROR_NREADY));
+    this->setBusy((currentIO &    static_cast<int>(CurrentDIO_Mask::BUSY)) >>    static_cast<int>(CurrentDIO_Order::BUSY));
+    this->setLasing((currentIO &  static_cast<int>(CurrentDIO_Mask::LASING)) >>  static_cast<int>(CurrentDIO_Order::LASING));
+
+    emit smcStatusUpdate();
+
+    traceExit;
+
+}
 
 bool SystemStatusData::getBusy() const { return busy; }
 

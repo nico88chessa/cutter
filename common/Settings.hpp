@@ -34,6 +34,7 @@ public:
     QString getCtBroadcastIpAddress() const { return ctBroadcastIpAddress; }
     quint16 getCtBroadcastPort() const { return ctBroadcastPort; }
 
+    QString getMachineLocalIpAddress() const { return machineLocalIpAddress; }
 
 private:
     // Cambridge technology (CT)
@@ -41,6 +42,8 @@ private:
     quint16 ctRestartIntervalMs;
     QString ctBroadcastIpAddress;
     quint16 ctBroadcastPort;
+
+    QString machineLocalIpAddress;
 
 };
 

@@ -38,25 +38,46 @@ enum class EC100StatusType : int {
 Q_ENUM_NS(EC100StatusType)
 
 
+enum class CurrentDIO_Order : int {
+    AUX_GPI1 = 0,
+    AUX_GPI2,
+    AUX_GPI3,
+    AUX_GPI4,
+    AUX_START,
+    START,
+    INTERLOCK1,
+    INTERLOCK2,
+    INTERLOCK3,
+    INTERLOCK4,
+    AUX_GPO1,
+    AUX_GPO2,
+    AUX_GPO3,
+    AUX_GPO4,
+    JOBACTIVE,
+    ERROR_NREADY,
+    BUSY,
+    LASING
+};
+
 enum class CurrentDIO_Mask : int {
-    AUX_GPI1 = 0x01 << 0,
-    AUX_GPI2 = 0x01 << 1,
-    AUX_GPI3 = 0x01 << 2,
-    AUX_GPI4 = 0x01 << 3,
-    AUX_START = 0x01 << 4,
-    START = 0x01 << 5,
-    INTERLOCK1 = 0x01 << 6,
-    INTERLOCK2 = 0x01 << 7,
-    INTERLOCK3 = 0x01 << 8,
-    INTERLOCK4 = 0x01 << 9,
-    AUX_GPO1 = 0x01 << 10,
-    AUX_GPO2 = 0x01 << 11,
-    AUX_GPO3 = 0x01 << 12,
-    AUX_GPO4 = 0x01 << 13,
-    JOBACTIVE = 0x01 << 14,
-    ERROR_NREADY = 0x01 << 15,
-    BUSY = 0x01 << 16,
-    LASING = 0x01 << 17
+    AUX_GPI1 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPI1),
+    AUX_GPI2 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPI2),
+    AUX_GPI3 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPI3),
+    AUX_GPI4 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPI4),
+    AUX_START = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_START),
+    START = 0x01 << static_cast<int>(CurrentDIO_Order::START),
+    INTERLOCK1 = 0x01 << static_cast<int>(CurrentDIO_Order::INTERLOCK1),
+    INTERLOCK2 = 0x01 << static_cast<int>(CurrentDIO_Order::INTERLOCK2),
+    INTERLOCK3 = 0x01 << static_cast<int>(CurrentDIO_Order::INTERLOCK3),
+    INTERLOCK4 = 0x01 << static_cast<int>(CurrentDIO_Order::INTERLOCK4),
+    AUX_GPO1 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPO1),
+    AUX_GPO2 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPO2),
+    AUX_GPO3 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPO3),
+    AUX_GPO4 = 0x01 << static_cast<int>(CurrentDIO_Order::AUX_GPO4),
+    JOBACTIVE = 0x01 << static_cast<int>(CurrentDIO_Order::JOBACTIVE),
+    ERROR_NREADY = 0x01 << static_cast<int>(CurrentDIO_Order::ERROR_NREADY),
+    BUSY = 0x01 << static_cast<int>(CurrentDIO_Order::BUSY),
+    LASING = 0x01 << static_cast<int>(CurrentDIO_Order::LASING)
 };
 Q_ENUMS(CurrentDIO_Mask)
 

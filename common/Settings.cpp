@@ -35,6 +35,11 @@ void Settings::loadValuesFromFile() {
     traceDebug() << "ctBroadcastIpAddress:" << ctBroadcastIpAddress;
     traceDebug() << "ctBroadcastIpAddress:" << ctBroadcastIpAddress;
 
+
+    machineLocalIpAddress = settings.value(MACHINE_LOCAL_IP_ADDRESS, MACHINE_LOCAL_IP_ADDRESS_DFLT).value<QString>();
+
+    traceDebug() << "machineLocalIpAddress: " << machineLocalIpAddress;
+
     traceExit;
 
 }
@@ -52,6 +57,8 @@ void Settings::writeValuesToFile() {
     settings.setValue(CT_BROADCAST_IP_ADDRESS, ctBroadcastIpAddress);
     settings.setValue(CT_BROADCAST_PORT, ctBroadcastPort);
 
+    settings.setValue(MACHINE_LOCAL_IP_ADDRESS, machineLocalIpAddress);
+
     settings.sync();
 
     traceExit;
@@ -64,6 +71,8 @@ Settings& Settings::instance() {
     return instance;
 
 }
+
+
 
 
 

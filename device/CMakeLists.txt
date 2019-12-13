@@ -1,5 +1,8 @@
 SET(ITEMS
+    DeviceFactory
+    CambridgeStatusData
     CambridgeInspector
+    CambridgeUtils
     )
 
 UNSET(QML_FILES)

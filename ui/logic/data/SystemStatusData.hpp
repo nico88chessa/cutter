@@ -8,47 +8,68 @@
 
 namespace PROGRAM_NAMESPACE {
 
+class CambridgeStatusData;
+
 class SystemStatusData : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QString msn READ getMsn WRITE setMsn NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString pVer READ getPVer WRITE setPVer NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString aVer READ getAVer WRITE setAVer NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString objextVer READ getObjextVer WRITE setObjextVer NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString fpgaFirmVer READ getFpgaFirmVer WRITE setFpgaFirmVer NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int stateCode READ getStateCode WRITE setStateCode NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int lastError READ getLastError WRITE setLastError NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int freeTempStorage READ getFreeTempStorage WRITE setFreeTempStorage NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString permStoragePath READ getPermStoragePath WRITE setPermStoragePath NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int freePermStorage READ getFreePermStorage WRITE setFreePermStorage NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int freeUsbStorage READ getFreeUsbStorage WRITE setFreeUsbStorage NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString mac READ getMac WRITE setMac NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString netmask READ getNetmask WRITE setNetmask NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString netassign READ getNetassign WRITE setNetassign NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString ip READ getIp WRITE setIp NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString connectIp READ getConnectIp WRITE setConnectIp NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString friendlyName READ getFriendlyName WRITE setFriendlyName NOTIFY smcStatusUpdate)
-    Q_PROPERTY(QString connectJob READ getConnectJob WRITE setConnectJob NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int port READ getPort WRITE setPort NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int hsn READ getHsn WRITE setHsn NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pMsn READ getMsn WRITE setMsn NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pPVer READ getPVer WRITE setPVer NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pAVer READ getAVer WRITE setAVer NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pObjextVer READ getObjextVer WRITE setObjextVer NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pFpgaFirmVer READ getFpgaFirmVer WRITE setFpgaFirmVer NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pStateCode READ getStateCode WRITE setStateCode NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pLastError READ getLastError WRITE setLastError NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pFreeTempStorage READ getFreeTempStorage WRITE setFreeTempStorage NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pPermStoragePath READ getPermStoragePath WRITE setPermStoragePath NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pFreePermStorage READ getFreePermStorage WRITE setFreePermStorage NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pFreeUsbStorage READ getFreeUsbStorage WRITE setFreeUsbStorage NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pMac READ getMac WRITE setMac NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pNetmask READ getNetmask WRITE setNetmask NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pNetassign READ getNetassign WRITE setNetassign NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pIp READ getIp WRITE setIp NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pConnectIp READ getConnectIp WRITE setConnectIp NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pFriendlyName READ getFriendlyName WRITE setFriendlyName NOTIFY smcStatusUpdate)
+    Q_PROPERTY(QString pConnectJob READ getConnectJob WRITE setConnectJob NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pPort READ getPort WRITE setPort NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pHsn READ getHsn WRITE setHsn NOTIFY smcStatusUpdate)
 
-    Q_PROPERTY(bool xPosAck READ getXPosAck WRITE setXPosAck NOTIFY smcStatusUpdate)
-    Q_PROPERTY(bool yPosAck READ getYPosAck WRITE setYPosAck NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int xPos READ getXPos WRITE setXPos NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int yPos READ getYPos WRITE setYPos NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int xActPos READ getXActPos WRITE setXActPos NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int yActPos READ getYActPos WRITE setYActPos NOTIFY smcStatusUpdate)
-    Q_PROPERTY(bool xTemp READ getXTemp WRITE setXTemp NOTIFY smcStatusUpdate)
-    Q_PROPERTY(bool yTemp READ getYTemp WRITE setYTemp NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int contrlTemp READ getContrlTemp WRITE setContrlTemp NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int xStatus READ getXStatus WRITE setXStatus NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int yStatus READ getYStatus WRITE setYStatus NOTIFY smcStatusUpdate)
-    Q_PROPERTY(bool xPower READ getXPower WRITE setXPower NOTIFY smcStatusUpdate)
-    Q_PROPERTY(bool yPower READ getYPower WRITE setYPower NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int interlock READ getInterlock WRITE setInterlock NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pXPosAck READ getXPosAck WRITE setXPosAck NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pYPosAck READ getYPosAck WRITE setYPosAck NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pXPos READ getXPos WRITE setXPos NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pYPos READ getYPos WRITE setYPos NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pXActPos READ getXActPos WRITE setXActPos NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pYActPos READ getYActPos WRITE setYActPos NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pXTemp READ getXTemp WRITE setXTemp NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pYTemp READ getYTemp WRITE setYTemp NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pContrlTemp READ getContrlTemp WRITE setContrlTemp NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pXStatus READ getXStatus WRITE setXStatus NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pYStatus READ getYStatus WRITE setYStatus NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pXPower READ getXPower WRITE setXPower NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pYPower READ getYPower WRITE setYPower NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pInterlock READ getInterlock WRITE setInterlock NOTIFY smcStatusUpdate)
 
-    Q_PROPERTY(int jobMarker READ getJobMarker WRITE setJobMarker NOTIFY smcStatusUpdate)
-    Q_PROPERTY(int jobDataCntr READ getJobDataCntr WRITE setJobDataCntr NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPI1 READ getAuxGPI1 WRITE setAuxGPI1 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPI2 READ getAuxGPI2 WRITE setAuxGPI2 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPI3 READ getAuxGPI3 WRITE setAuxGPI3 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPI4 READ getAuxGPI4 WRITE setAuxGPI4 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxStart READ getAuxStart WRITE setAuxStart NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pStart READ getStart WRITE setStart NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pInterlock1 READ getInterlock1 WRITE setInterlock1 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pInterlock2 READ getInterlock2 WRITE setInterlock2 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pInterlock3 READ getInterlock3 WRITE setInterlock3 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pInterlock4 READ getInterlock4 WRITE setInterlock4 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPO1 READ getAuxGPO1 WRITE setAuxGPO1 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPO2 READ getAuxGPO2 WRITE setAuxGPO2 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPO3 READ getAuxGPO3 WRITE setAuxGPO3 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pAuxGPO4 READ getAuxGPO4 WRITE setAuxGPO4 NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pJobactive READ getJobactive WRITE setJobactive NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pErrorNready READ getErrorNready WRITE setErrorNready NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pBusy READ getBusy WRITE setBusy NOTIFY smcStatusUpdate)
+    Q_PROPERTY(bool pLasing READ getLasing WRITE setLasing NOTIFY smcStatusUpdate)
+
+    Q_PROPERTY(int pJobMarker READ getJobMarker WRITE setJobMarker NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pJobDataCntr READ getJobDataCntr WRITE setJobDataCntr NOTIFY smcStatusUpdate)
 
 public:
     using Ptr = SystemStatusData*;
@@ -280,6 +301,8 @@ public:
 
     bool getLasing() const;
     void setLasing(bool value);
+
+    void updateCambridgeStatus(const CambridgeStatusData& status);
 
 signals:
     void smcStatusUpdate();

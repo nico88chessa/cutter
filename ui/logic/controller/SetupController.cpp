@@ -8,6 +8,7 @@ SetupController::SetupController(QObject* parent) :
     data(new SetupData()) {
 
     traceEnter;
+
     qmlRegisterType<SetupData>();
 
     traceExit;
