@@ -171,7 +171,7 @@ Pane {
             }
             background: Rectangle {
                 border.width: 0
-                color: "transparent"
+                color: "#00000000"
             }
 
         }
@@ -313,7 +313,7 @@ Pane {
             }
             background: Rectangle {
                 border.width: 0
-                color: "transparent"
+                color: "#00000000"
             }
         }
 
@@ -374,7 +374,7 @@ Pane {
 
             background: Rectangle {
                 border.width: 0
-                color: "transparent"
+                color: "#00000000"
             }
         }
 

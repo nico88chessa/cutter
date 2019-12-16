@@ -58,8 +58,9 @@ ApplicationWindow {
                         id: textRect
                         anchors.fill: parent
                         anchors.left: parent.left
-                        color: "transparent"
+                        color: "#00000000"
                         radius: 10
+                        z: textRow.z-1
                     }
 
                     MouseArea {
@@ -67,8 +68,8 @@ ApplicationWindow {
                         anchors.fill: parent
                         hoverEnabled: true
                         onClicked: { listView.currentIndex = pKeyRole }
-                        onEntered: { textRect.color = "#600000FF" }
-                        onExited: { textRect.color = "transparent" }
+                        onEntered: { textRect.color = "#8eacbb" }
+                        onExited: { textRect.color = "#00000000" }
                     }
 
                 }
@@ -81,7 +82,7 @@ ApplicationWindow {
             highlight: Rectangle {
                 id: hRect
                 radius: 10
-                color: "lightGray"
+                color: "#03a9f4"
                 width: parent.width
                 height: 36
             }
