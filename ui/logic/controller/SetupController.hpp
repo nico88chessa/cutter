@@ -28,6 +28,9 @@ public:
 private:
     QScopedPointer<SetupData> data;
 
+    QString ctSetupIp;
+    quint16 ctSetupPort;
+
 private:
     explicit SetupController(QObject* parent = Q_NULLPTR);
 

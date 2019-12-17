@@ -15,16 +15,18 @@ static constexpr char CT_REFRESH_INTERVAL_MS[] = "Cambridge/RefreshTimeMs";
 static constexpr char CT_RESTART_INTERVAL_MS[] = "Cambridge/RestartTimeMs";
 static constexpr char CT_BROADCAST_IP_ADDRESS[] = "Cambridge/BroadcastIpAddress";
 static constexpr char CT_BROADCAST_PORT[] = "Cambridge/BroadcastPort";
+static constexpr char CT_SETUP_SOCKET_IP_ADDRESS[] = "Cambridge/SetupSocketIpAddress";
+static constexpr char CT_SETUP_SOCKET_PORT[] = "Cambridge/SetupSocketPort";
 
 static constexpr quint16 CT_REFRESH_INTERVAL_MS_DFLT = 100;
 static constexpr quint16 CT_RESTART_INTERVAL_MS_DFLT = 5000;
 static constexpr char CT_BROADCAST_IP_ADDRESS_DFLT[] = "224.168.100.2";
 static constexpr quint16 CT_BROADCAST_PORT_DFLT = 11000;
-
+static constexpr char CT_SETUP_SOCKET_IP_ADDRESS_DFLT[] = "192.168.100.20";
+static constexpr quint16 CT_SETUP_SOCKET_PORT_DFLT = 49000;
 
 // variabili di macchina
 static constexpr char MACHINE_LOCAL_IP_ADDRESS[] = "Machine/LocalIpAddress";
-
 static constexpr char MACHINE_LOCAL_IP_ADDRESS_DFLT[] = "192.168.100.2";
 
 }

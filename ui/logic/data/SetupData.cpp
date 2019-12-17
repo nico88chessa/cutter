@@ -3,9 +3,20 @@
 #include <MathUtils.hpp>
 #include <Logger.hpp>
 
+
 using namespace PROGRAM_NAMESPACE;
 
-SetupData::SetupData(QObject* parent) : QObject(parent) {
+
+SetupData::SetupData(QObject* parent) : QObject(parent),
+    cutHeight(0),
+    xStart(0),
+    yStart(0),
+    laserPower(0),
+    laserDuty(0),
+    laserJumpSpeed(0),
+    laserMarkSpeed(0),
+    encoderPulses(0),
+    dialogMessage("") {
 
     traceEnter;
     traceExit;
@@ -42,17 +53,6 @@ void SetupData::setYStart(const real& value) {
     if (!MathUtils::almostEqual(value, yStart)) {
         yStart = value;
         emit yStartChanged();
-    }
-}
-
-int SetupData::getLaserPower() const {
-    return laserPower;
-}
-
-void SetupData::setLaserPower(int value) {
-    if (!MathUtils::almostEqual(value, laserPower)) {
-        laserPower = value;
-        emit laserPowerChanged();
     }
 }
 
@@ -99,4 +99,13 @@ void SetupData::setEncoderPulses(int value) {
         emit encoderPulsesChanged();
 
     }
+}
+
+QString SetupData::getDialogMessage() const {
+    return dialogMessage;
+}
+
+void SetupData::setDialogMessage(const QString& value) {
+    dialogMessage = value;
+    emit dialogMessageChanged();
 }

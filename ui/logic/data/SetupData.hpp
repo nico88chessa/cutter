@@ -16,12 +16,13 @@ class SetupData : public QObject {
     Q_PROPERTY(real pXStart READ getXStart WRITE setXStart NOTIFY xStartChanged)
     Q_PROPERTY(real pYStart READ getYStart WRITE setYStart NOTIFY yStartChanged)
 
-    Q_PROPERTY(int pLaserPower READ getLaserPower WRITE setLaserPower NOTIFY laserPowerChanged)
     Q_PROPERTY(int pLaserDuty READ getLaserDuty WRITE setLaserDuty NOTIFY laserDutyChanged)
     Q_PROPERTY(int pLaserJumpSpeed READ getLaserJumpSpeed WRITE setLaserJumpSpeed NOTIFY laserJumpSpeedChanged)
     Q_PROPERTY(int pLaserMarkSpeed READ getLaserMarkSpeed WRITE setLaserMarkSpeed NOTIFY laserMarkSpeedChanged)
 
     Q_PROPERTY(int pEncoderPulses READ getEncoderPulses WRITE setEncoderPulses NOTIFY encoderPulsesChanged)
+
+    Q_PROPERTY(QString pDialogMessage READ getDialogMessage WRITE setDialogMessage NOTIFY dialogMessageChanged)
 
 public:
     using Ptr = SetupData*;
@@ -39,6 +40,8 @@ private:
 
     int encoderPulses;
 
+    QString dialogMessage;
+
 public:
     explicit SetupData(QObject* parent = Q_NULLPTR);
 
@@ -50,9 +53,6 @@ public:
 
     real getYStart() const;
     void setYStart(const real& value);
-
-    int getLaserPower() const;
-    void setLaserPower(int value);
 
     int getLaserDuty() const;
     void setLaserDuty(int value);
@@ -66,6 +66,9 @@ public:
     int getEncoderPulses() const;
     void setEncoderPulses(int value);
 
+    QString getDialogMessage() const;
+    void setDialogMessage(const QString& value);
+
 signals:
     void cutHeightChanged();
     void xStartChanged();
@@ -77,6 +80,8 @@ signals:
     void laserMarkSpeedChanged();
 
     void encoderPulsesChanged();
+
+    void dialogMessageChanged();
 
 };
 

@@ -195,33 +195,6 @@ Pane {
                 anchors.fill: parent
 
                 Label {
-                    id: label2
-                    text: qsTr("Laser Power [%]")
-                    Layout.minimumWidth: 100
-                }
-
-                SpinBox {
-                    id: tfLaserPower
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: 40
-                    from: 0
-                    to: 100
-                    editable: true
-                    down.indicator: Item {}
-                    up.indicator: Item {}
-
-                    onValueModified: {
-                        SetCtrl.SetupController.pData.pLaserPower = tfLaserPower.value;
-                    }
-
-                    Binding {
-                        target: tfLaserPower
-                        property: "value"
-                        value: SetCtrl.SetupController.pData.pLaserPower
-                    }
-                }
-
-                Label {
                     id: label3
                     text: qsTr("Laser Duty [%]")
                     Layout.minimumWidth: 100
@@ -269,7 +242,7 @@ Pane {
                     }
 
                     Binding {
-                        target: tfCutHeight
+                        target: tfJumpSpeed
                         property: "value"
                         value: SetCtrl.SetupController.pData.pLaserJumpSpeed
                     }
