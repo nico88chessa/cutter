@@ -314,11 +314,11 @@ Pane {
                     id: tfMarkDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserMarkDelay = tfMarkDelay.value;
@@ -341,11 +341,11 @@ Pane {
                     id: tfJumpDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserJumpDelay = tfJumpDelay.value;
@@ -368,11 +368,11 @@ Pane {
                     id: tfPolyDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserPolyDelay = tfPolyDelay.value;
@@ -395,11 +395,11 @@ Pane {
                     id: tfOnDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserOnDelay = tfOnDelay.value;
@@ -422,11 +422,11 @@ Pane {
                     id: tfOffDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserOffDelay = tfOffDelay.value;
@@ -450,11 +450,11 @@ Pane {
                     id: tfPipelineDelay
                     Layout.minimumHeight: 40
                     Layout.fillWidth: true
-                    from: 1
+                    from: -15000
+                    to: 15000
                     editable: true
                     down.indicator: Item { }
                     up.indicator: Item { }
-                    to: 15000
 
                     onValueModified: {
                         SetCtrl.SetupController.pData.pLaserPipelineDelay = tfPipelineDelay.value;
