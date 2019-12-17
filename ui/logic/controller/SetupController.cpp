@@ -58,6 +58,15 @@ void SetupController::setupSignalsAndSlots() {
 
 }
 
+void SetupController::showDialog(QAbstractSocket::SocketError err) {
+    traceErr() << "Socket error: " << static_cast<int>(err);
+    this->showDialog(QString("Invio dati a SMC fallito - Err: %1").arg(static_cast<int>(err)));
+}
+
+void SetupController::showDialog(const QString& msg) {
+    emit notifyDialog(msg);
+}
+
 SetupController::~SetupController() {
     traceEnter;
 
@@ -68,7 +77,7 @@ SetupData* SetupController::getData() const {
     return data.data();
 }
 
-void SetupController::sendData() const {
+void SetupController::sendData() {
 
     traceEnter;
     auto&& settings = Settings::instance();
@@ -104,12 +113,14 @@ void SetupController::sendData() const {
     });
 
     connect(socket.data(), static_cast<void (QTcpSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::error),
-            [&](QAbstractSocket::SocketError err) {
-        traceErr() << "Err";
-        data->setDialogMessage("Errore socket");
-    });
+            this, static_cast<void (SetupController::*)(QAbstractSocket::SocketError)>(&SetupController::showDialog));
 
     socket->connectToHost(ctSetupIp, ctSetupPort);
+    if (!socket->waitForConnected(WAIT_TIME_MS_SOCKET)) {
+        traceErr() << "Impossibile connettersi a SMC per invio dati";
+        this->showDialog("Impossibile connettersi a SMC");
+        return;
+    }
 
     int bodySize = sizeof(int)*13;
     QByteArray body(bodySize, ' ');
@@ -151,12 +162,24 @@ void SetupController::sendData() const {
     dgHeader.setByteOrder(QDataStream::LittleEndian);
     dgHeader << bodySize;
     socket->write(header);
-    socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET);
+    if (!socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET)) {
+        traceErr() << "Impossibile inviare header dati";
+        this->showDialog("Impossibile inviare header dati");
+        socket->close();
+        return;
+    };
 
     socket->write(body);
-    socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET);
+    if (!socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET)) {
+        traceErr() << "Impossibile inviare body dati";
+        this->showDialog("Impossibile inviare body dati");
+        socket->close();
+        return;
+    }
 
     socket->close();
+
+    this->showDialog("Invio dati avvenuto correttamente");
 
     traceExit;
 

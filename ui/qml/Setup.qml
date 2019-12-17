@@ -10,6 +10,32 @@ Pane {
     implicitWidth: parent.width
     height: parent.height
 
+    Dialog {
+        id: operationDialog
+        standardButtons: Dialog.Ok
+        width: 500
+        height: 200
+        modal: true
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+
+        Text {
+            id: operationDialogText
+            anchors.centerIn: parent
+            text: ""
+            font.pointSize: 12
+        }
+
+    }
+
+    Connections {
+        target: SetCtrl.SetupController
+        onNotifyDialog: {
+            operationDialogText.text = msg
+            operationDialog.visible = true
+        }
+    }
+
     GridLayout {
         id: glSetup
         width: 6

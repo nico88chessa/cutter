@@ -115,15 +115,6 @@ ApplicationWindow {
 
         }
 
-
-
-
     }
 
-
 }
-
-/*##^## Designer {
-    D{i:9;anchors_width:799}D{i:12;anchors_x:0;anchors_y:0}D{i:11;anchors_height:200;anchors_width:200}
-}
- ##^##*/

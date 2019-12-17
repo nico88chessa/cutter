@@ -2,6 +2,7 @@
 #define SETUPCONTROLLER_HPP
 
 #include <QAbstractListModel>
+#include <QAbstractSocket>
 #include <QObject>
 #include <QQmlEngine>
 
@@ -36,13 +37,20 @@ private:
 
     void setupSignalsAndSlots();
 
+private slots:
+    void showDialog(QAbstractSocket::SocketError err);
+    void showDialog(const QString& msg);
+
 public:
     ~SetupController();
 
     SetupData* getData() const;
 
 public slots:
-    void sendData() const;
+    void sendData();
+
+signals:
+    void notifyDialog(const QString& msg);
 
 };
 
