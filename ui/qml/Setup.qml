@@ -55,7 +55,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 10 * scale
+                    to: 100 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -96,7 +96,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 10 * scale
+                    to: 100 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -135,7 +135,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 10 * scale
+                    to: 100 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
