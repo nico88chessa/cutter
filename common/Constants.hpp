@@ -29,6 +29,20 @@ static constexpr quint16 CT_SETUP_SOCKET_PORT_DFLT = 49000;
 static constexpr char MACHINE_LOCAL_IP_ADDRESS[] = "Machine/LocalIpAddress";
 static constexpr char MACHINE_LOCAL_IP_ADDRESS_DFLT[] = "192.168.100.2";
 
+static constexpr char SMC_CONF_CUTHEIGHT[] = "SmcConf/CutHeight";
+static constexpr char SMC_CONF_XSTART[] = "SmcConf/XStart";
+static constexpr char SMC_CONF_YSTART[] = "SmcConf/YStart";
+static constexpr char SMC_CONF_LASERDUTY[] = "SmcConf/LaserDuty";
+static constexpr char SMC_CONF_LASERJUMPSPEED[] = "SmcConf/LaserJumpSpeed";
+static constexpr char SMC_CONF_LASERMARKSPEED[] = "SmcConf/LaserMarkSpeed";
+static constexpr char SMC_CONF_LASERMARKDELAY[] = "SmcConf/LaserMarkDelay";
+static constexpr char SMC_CONF_LASERJUMPDELAY[] = "SmcConf/LaserJumpDelay";
+static constexpr char SMC_CONF_LASERPOLYDELAY[] = "SmcConf/LaserPolyDelay";
+static constexpr char SMC_CONF_LASERONDELAY[] = "SmcConf/LaserOnDelay";
+static constexpr char SMC_CONF_LASEROFFDELAY[] = "SmcConf/LaserOffDelay";
+static constexpr char SMC_CONF_LASERPIPELINEDELAY[] = "SmcConf/LaserPipelineDelay";
+static constexpr char SMC_CONF_ENCODERPULSES[] = "SmcConf/EncoderPulses";
+
 }
 
 

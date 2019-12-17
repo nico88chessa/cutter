@@ -20,6 +20,13 @@ class SetupData : public QObject {
     Q_PROPERTY(int pLaserJumpSpeed READ getLaserJumpSpeed WRITE setLaserJumpSpeed NOTIFY laserJumpSpeedChanged)
     Q_PROPERTY(int pLaserMarkSpeed READ getLaserMarkSpeed WRITE setLaserMarkSpeed NOTIFY laserMarkSpeedChanged)
 
+    Q_PROPERTY(int pLaserMarkDelay READ getLaserMarkDelay WRITE setLaserMarkDelay NOTIFY laserMarkDelayChanged)
+    Q_PROPERTY(int pLaserJumpDelay READ getLaserJumpDelay WRITE setLaserJumpDelay NOTIFY laserJumpDelayChanged)
+    Q_PROPERTY(int pLaserPolyDelay READ getLaserPolyDelay WRITE setLaserPolyDelay NOTIFY laserPolyDelayChanged)
+    Q_PROPERTY(int pLaserOnDelay READ getLaserOnDelay WRITE setLaserOnDelay NOTIFY laserOnDelayChanged)
+    Q_PROPERTY(int pLaserOffDelay READ getLaserOffDelay WRITE setLaserOffDelay NOTIFY laserOffDelayChanged)
+    Q_PROPERTY(int pLaserPipelineDelay READ getLaserPipelineDelay WRITE setLaserPipelineDelay NOTIFY laserPipelineDelayChanged)
+
     Q_PROPERTY(int pEncoderPulses READ getEncoderPulses WRITE setEncoderPulses NOTIFY encoderPulsesChanged)
 
     Q_PROPERTY(QString pDialogMessage READ getDialogMessage WRITE setDialogMessage NOTIFY dialogMessageChanged)
@@ -33,10 +40,15 @@ private:
     real xStart;
     real yStart;
 
-    int laserPower;
     int laserDuty;
     int laserJumpSpeed;
     int laserMarkSpeed;
+    int laserMarkDelay;
+    int laserJumpDelay;
+    int laserPolyDelay;
+    int laserOnDelay;
+    int laserOffDelay;
+    int laserPipelineDelay;
 
     int encoderPulses;
 
@@ -69,6 +81,24 @@ public:
     QString getDialogMessage() const;
     void setDialogMessage(const QString& value);
 
+    int getLaserMarkDelay() const;
+    void setLaserMarkDelay(int value);
+
+    int getLaserJumpDelay() const;
+    void setLaserJumpDelay(int value);
+
+    int getLaserPolyDelay() const;
+    void setLaserPolyDelay(int value);
+
+    int getLaserOnDelay() const;
+    void setLaserOnDelay(int value);
+
+    int getLaserOffDelay() const;
+    void setLaserOffDelay(int value);
+
+    int getLaserPipelineDelay() const;
+    void setLaserPipelineDelay(int value);
+
 signals:
     void cutHeightChanged();
     void xStartChanged();
@@ -78,6 +108,13 @@ signals:
     void laserDutyChanged();
     void laserJumpSpeedChanged();
     void laserMarkSpeedChanged();
+
+    void laserMarkDelayChanged();
+    void laserJumpDelayChanged();
+    void laserPolyDelayChanged();
+    void laserOnDelayChanged();
+    void laserOffDelayChanged();
+    void laserPipelineDelayChanged();
 
     void encoderPulsesChanged();
 

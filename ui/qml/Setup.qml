@@ -55,7 +55,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 100 * scale
+                    to: 10 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -96,7 +96,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 100 * scale
+                    to: 10 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -135,7 +135,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 100 * scale
+                    to: 10 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -277,6 +277,169 @@ Pane {
 
                 }
 
+
+                Label {
+                    id: label8
+                    text: qsTr("Mark Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfMarkDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserMarkDelay = tfMarkDelay.value;
+                    }
+
+                    Binding {
+                        target: tfMarkDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserMarkDelay
+                    }
+                }
+
+                Label {
+                    id: label9
+                    text: qsTr("Jump Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfJumpDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserJumpDelay = tfJumpDelay.value;
+                    }
+
+                    Binding {
+                        target: tfJumpDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserJumpDelay
+                    }
+                }
+
+                Label {
+                    id: label10
+                    text: qsTr("Poly Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfPolyDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserPolyDelay = tfPolyDelay.value;
+                    }
+
+                    Binding {
+                        target: tfPolyDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserPolyDelay
+                    }
+                }
+
+                Label {
+                    id: label11
+                    text: qsTr("On Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfOnDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserOnDelay = tfOnDelay.value;
+                    }
+
+                    Binding {
+                        target: tfOnDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserOnDelay
+                    }
+                }
+
+                Label {
+                    id: label12
+                    text: qsTr("Off Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfOffDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserOffDelay = tfOffDelay.value;
+                    }
+
+                    Binding {
+                        target: tfOffDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserOffDelay
+                    }
+                }
+
+
+                Label {
+                    id: label13
+                    text: qsTr("Pipeline Delay [us]")
+                    Layout.minimumWidth: 100
+                }
+
+                SpinBox {
+                    id: tfPipelineDelay
+                    Layout.minimumHeight: 40
+                    Layout.fillWidth: true
+                    from: 1
+                    editable: true
+                    down.indicator: Item { }
+                    up.indicator: Item { }
+                    to: 15000
+
+                    onValueModified: {
+                        SetCtrl.SetupController.pData.pLaserPipelineDelay = tfPipelineDelay.value;
+                    }
+
+                    Binding {
+                        target: tfPipelineDelay
+                        property: "value"
+                        value: SetCtrl.SetupController.pData.pLaserPipelineDelay
+                    }
+                }
                 Item {
                     id: element2
                     width: 1
