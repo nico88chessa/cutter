@@ -96,7 +96,7 @@ ApplicationWindow {
 
             Item {
                 id: iSetup
-                anchors.fill: parent
+//                anchors.fill: parent
                 Setup {
                     id: setup
                 }
@@ -104,7 +104,7 @@ ApplicationWindow {
 
             Item {
                 id: iStatus
-                anchors.fill: parent
+//                anchors.fill: parent
 
                 SystemStatus {
                     id: systemStatus

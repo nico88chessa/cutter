@@ -81,7 +81,7 @@ Pane {
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
                     from: 0 * scale
-                    to: 100 * scale
+                    to: 90 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -121,8 +121,8 @@ Pane {
                     id: tfCutStartX
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
-                    from: 0 * scale
-                    to: 100 * scale
+                    from: -45 * scale
+                    to: 45 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
@@ -160,8 +160,8 @@ Pane {
                     id: tfCutStartY
                     Layout.fillWidth: true
                     Layout.minimumHeight: 40
-                    from: 0 * scale
-                    to: 100 * scale
+                    from: -45 * scale
+                    to: 45 * scale
                     editable: true
                     down.indicator: Item {}
                     up.indicator: Item {}
