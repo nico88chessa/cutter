@@ -29,6 +29,8 @@ class SetupData : public QObject {
 
     Q_PROPERTY(int pEncoderPulses READ getEncoderPulses WRITE setEncoderPulses NOTIFY encoderPulsesChanged)
 
+    Q_PROPERTY(bool pIsSendButtonEnabled READ getIsSendButtonEnabled WRITE setIsSendButtonEnabled NOTIFY isSendButtonEnabledChanged)
+
     Q_PROPERTY(QString pDialogMessage READ getDialogMessage WRITE setDialogMessage NOTIFY dialogMessageChanged)
 
 public:
@@ -51,6 +53,8 @@ private:
     int laserPipelineDelay;
 
     int encoderPulses;
+
+    bool isSendButtonEnabled;
 
     QString dialogMessage;
 
@@ -99,6 +103,9 @@ public:
     int getLaserPipelineDelay() const;
     void setLaserPipelineDelay(int value);
 
+    bool getIsSendButtonEnabled() const;
+    void setIsSendButtonEnabled(bool value);
+
 signals:
     void cutHeightChanged();
     void xStartChanged();
@@ -117,6 +124,8 @@ signals:
     void laserPipelineDelayChanged();
 
     void encoderPulsesChanged();
+
+    void isSendButtonEnabledChanged();
 
     void dialogMessageChanged();
 

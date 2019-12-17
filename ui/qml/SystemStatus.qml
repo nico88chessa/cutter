@@ -24,6 +24,10 @@ Pane {
             Layout.minimumHeight: 50
             Layout.fillWidth: true
 
+            Component.onCompleted: {
+                tBar.currentIndex = 0
+            }
+
             TabButton {
                 id: tButIO
                 text: qsTr("IO")
@@ -1579,7 +1583,7 @@ Pane {
 
                             TextField {
                                 id: tfXStatus
-                                text: SystemStatusCtrl.SystemStatusController.pData.pXStatus
+                                text: SystemStatusCtrl.SystemStatusController.pData.pXStatus.toString(16)
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1608,7 +1612,7 @@ Pane {
 
                             TextField {
                                 id: tfYStatus
-                                text: SystemStatusCtrl.SystemStatusController.pData.pYStatus
+                                text: SystemStatusCtrl.SystemStatusController.pData.pYStatus.toString(16)
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1695,7 +1699,7 @@ Pane {
 
                             TextField {
                                 id: tfInterlock
-                                text: SystemStatusCtrl.SystemStatusController.pData.pInterlock
+                                text: SystemStatusCtrl.SystemStatusController.pData.pInterlock.toString(16)
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160
@@ -1724,7 +1728,7 @@ Pane {
 
                             TextField {
                                 id: tfCurrentDIO
-                                text: ""
+                                text: SystemStatusCtrl.SystemStatusController.pData.pCurrentDIO.toString(16)
                                 horizontalAlignment: Text.AlignRight
                                 readOnly: true
                                 Layout.preferredWidth: 160

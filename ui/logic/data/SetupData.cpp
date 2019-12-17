@@ -8,13 +8,13 @@ using namespace PROGRAM_NAMESPACE;
 
 
 SetupData::SetupData(QObject* parent) : QObject(parent) {
-
+    
     traceEnter;
-
+    
     cutHeight = 0;
     xStart = 0;
     yStart = 0;
-
+    
     laserDuty = 0;
     laserJumpSpeed = 0;
     laserMarkSpeed = 0;
@@ -149,6 +149,15 @@ void SetupData::setEncoderPulses(int value) {
         encoderPulses = value;
         emit encoderPulsesChanged();
 
+    }
+}
+
+bool SetupData::getIsSendButtonEnabled() const { return isSendButtonEnabled; }
+
+void SetupData::setIsSendButtonEnabled(bool value) {
+    if (value != isSendButtonEnabled) {
+        isSendButtonEnabled = value;
+        emit isSendButtonEnabledChanged();
     }
 }
 

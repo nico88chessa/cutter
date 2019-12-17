@@ -1,13 +1,16 @@
 #include "SetupController.hpp"
 
+#include <DeviceFactory.hpp>
 #include <QTcpSocket>
 #include <QtMath>
 
+#include <CambridgeInspector.hpp>
 #include <QDataStream>
 #include <Settings.hpp>
 
 using namespace PROGRAM_NAMESPACE;
 
+static constexpr int WAIT_TIME_MS_SOCKET = 2000;
 
 SetupController::SetupController(QObject* parent) :
     QObject(parent),
@@ -36,6 +39,21 @@ SetupController::SetupController(QObject* parent) :
     data->setLaserPipelineDelay(settings.getSmcConfLaserPipelineDelay());
     data->setEncoderPulses(settings.getSmcConfEncoderPulses());
 
+    this->setupSignalsAndSlots();
+    traceExit;
+
+}
+
+void SetupController::setupSignalsAndSlots() {
+
+    traceEnter;
+    auto&& devFact = DeviceFactory::instance();
+
+    connect(devFact.getCtWatcher(), &CambridgeInspector::statusSignal, [&](const CambridgeStatusData& status) {
+        int currentIO = status.getCurrentDIO();
+        bool isEnabled = (currentIO & static_cast<int>(CurrentDIO_Mask::AUX_GPO4)) >> static_cast<int>(CurrentDIO_Order::AUX_GPO4);
+        data->setIsSendButtonEnabled(isEnabled);
+    });
     traceExit;
 
 }
@@ -131,12 +149,14 @@ void SetupController::sendData() const {
     QByteArray header(headerSize, ' ');
     QDataStream dgHeader(&header, QIODevice::OpenModeFlag::ReadWrite);
     dgHeader.setByteOrder(QDataStream::LittleEndian);
-    dgHeader << bodySize; //bytes2Send.length();
+    dgHeader << bodySize;
     socket->write(header);
-    socket->waitForBytesWritten();
+    socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET);
 
     socket->write(body);
-    socket->waitForBytesWritten();
+    socket->waitForBytesWritten(WAIT_TIME_MS_SOCKET);
+
+    socket->close();
 
     traceExit;
 

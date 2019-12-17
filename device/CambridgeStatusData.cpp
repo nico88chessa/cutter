@@ -4,7 +4,47 @@
 using namespace PROGRAM_NAMESPACE;
 
 
-CambridgeStatusData::CambridgeStatusData() {  }
+CambridgeStatusData::CambridgeStatusData() {
+
+    msn = "";
+    pVer = "";
+    aVer = "";
+    objextVer = "";
+    fpgaFirmVer = "";
+    stateCode = 0;
+    lastError = 0;
+    freeTempStorage = 0;
+    permStoragePath = "";
+    freePermStorage = 0;
+    freeUsbStorage = 0;
+    mac = "";
+    netmask = "";
+    netassign = "";
+    ip = "";
+    connectIp = "";
+    friendlyName = "";
+    connectJob = "";
+    port = 0;
+    hsn = 0;
+    xPosAck = 0;
+    yPosAck = 0;
+    xPos = 0;
+    yPos = 0;
+    xActPos = 0;
+    yActPos = 0;
+    xTemp = 0;
+    yTemp = 0;
+    contrlTemp = 0;
+    xStatus = 0;
+    yStatus = 0;
+    xPower = 0;
+    yPower = 0;
+    interlock = 0;
+    currentDIO = 0;
+    jobMarker = 0;
+    jobDataCntr = 0;
+
+}
 
 QString CambridgeStatusData::getMsn() const { return msn; }
 

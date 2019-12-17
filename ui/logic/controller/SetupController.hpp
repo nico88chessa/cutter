@@ -34,6 +34,8 @@ private:
 private:
     explicit SetupController(QObject* parent = Q_NULLPTR);
 
+    void setupSignalsAndSlots();
+
 public:
     ~SetupController();
 

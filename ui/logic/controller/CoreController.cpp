@@ -92,8 +92,8 @@ CoreControllerPrivate::CoreControllerPrivate(QObject* parent) : QObject(parent),
     traceEnter;
     model->appendData(MenuItem("SETUP", MenuKeyType::SETUP));
     model->appendData(MenuItem("SYSTEM STATUS", MenuKeyType::SYSTEM_STATUS));
-    model->appendData(MenuItem("SETTINGS", MenuKeyType::SETTINGS));
-    model->appendData(MenuItem("INFO", MenuKeyType::INFO));
+    //model->appendData(MenuItem("SETTINGS", MenuKeyType::SETTINGS));
+    //model->appendData(MenuItem("INFO", MenuKeyType::INFO));
     traceExit;
 
 }

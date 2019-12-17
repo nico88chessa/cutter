@@ -536,6 +536,26 @@ Pane {
                 id: bSend
                 text: qsTr("Send Parameters")
                 onClicked: SetCtrl.SetupController.sendData()
+                font.pointSize: 10
+                rightPadding: 16
+                leftPadding: 16
+                Layout.minimumWidth: 80
+                Layout.minimumHeight: 36
+                enabled: SetCtrl.SetupController.pData.pIsSendButtonEnabled
+
+                contentItem: Text {
+                    text: bSend.text
+                    font: bSend.font
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+
+                background: Rectangle {
+                    color: "#455a64"
+                    opacity: bSend.enabled ? 1.00 : 0.38
+                    radius: 4
+                }
             }
 
         }

@@ -7,7 +7,11 @@
 using namespace PROGRAM_NAMESPACE;
 
 SystemStatusData::SystemStatusData(QObject* parent) :
-    QObject(parent) { }
+    QObject(parent) {
+
+    emit smcStatusUpdate();
+
+}
 
 bool SystemStatusData::getLasing() const { return lasing; }
 
@@ -54,6 +58,7 @@ void SystemStatusData::updateCambridgeStatus(const CambridgeStatusData& status) 
     this->setInterlock(status.getInterlock());
     this->setJobMarker(status.getJobMarker());
     this->setJobDataCntr(status.getJobDataCntr());
+    this->setCurrentDIO(status.getCurrentDIO());
 
     int currentIO = status.getCurrentDIO();
 
@@ -283,6 +288,10 @@ bool SystemStatusData::getYPower() const { return yPower; }
 void SystemStatusData::setYPower(bool value) { yPower = value; }
 
 int SystemStatusData::getInterlock() const { return interlock; }
+
+int SystemStatusData::getCurrentDIO() const { return currentDIO; }
+
+void SystemStatusData::setCurrentDIO(int value) { currentDIO = value; }
 
 void SystemStatusData::setInterlock(int value) { interlock = value; }
 

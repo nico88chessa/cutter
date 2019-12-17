@@ -48,6 +48,7 @@ class SystemStatusData : public QObject {
     Q_PROPERTY(bool pXPower READ getXPower WRITE setXPower NOTIFY smcStatusUpdate)
     Q_PROPERTY(bool pYPower READ getYPower WRITE setYPower NOTIFY smcStatusUpdate)
     Q_PROPERTY(int pInterlock READ getInterlock WRITE setInterlock NOTIFY smcStatusUpdate)
+    Q_PROPERTY(int pCurrentDIO READ getCurrentDIO WRITE setCurrentDIO NOTIFY smcStatusUpdate)
 
     Q_PROPERTY(bool pAuxGPI1 READ getAuxGPI1 WRITE setAuxGPI1 NOTIFY smcStatusUpdate)
     Q_PROPERTY(bool pAuxGPI2 READ getAuxGPI2 WRITE setAuxGPI2 NOTIFY smcStatusUpdate)
@@ -116,6 +117,7 @@ private:
     bool xPower;
     bool yPower;
     int interlock;
+    int currentDIO;
 
     bool auxGPI1;
     bool auxGPI2;
@@ -241,6 +243,9 @@ public:
 
     int getInterlock() const;
     void setInterlock(int value);
+
+    int getCurrentDIO() const;
+    void setCurrentDIO(int value);
 
     int getJobMarker() const;
     void setJobMarker(int value);
