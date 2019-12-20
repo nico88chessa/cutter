@@ -1,10 +1,9 @@
 SET(ITEMS
-    Constants
-    Logger
-    Settings
-    Types
-    FactoryQml
-    MathUtils
+    SetupController
+    CoreControllerPrivate
+    CoreController
+    SettingsController
+    SystemStatusController
     )
 
 UNSET(QML_FILES)
@@ -42,7 +41,7 @@ MESSAGE("${CMAKE_CURRENT_SOURCE_DIR}/PROJECT_QML_FILES: ${PROJECT_QML_FILES}")
 MESSAGE("${CMAKE_CURRENT_SOURCE_DIR}/PROJECT_QRC_FILES: ${PROJECT_QRC_FILES}")
 
 SET(SUB_FOLDERS
-    )
+)
 
 FOREACH(item ${SUB_FOLDERS})
     MESSAGE("Folder: " ${item})
