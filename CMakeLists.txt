@@ -5,7 +5,7 @@ INCLUDE(CheckCXXCompilerFlag)
 
 
 # variabili di configurazione progetto
-SET(CUTTER_VERSION 0.0.1)
+SET(CUTTER_VERSION 1.0.0)
 SET(PROJECT_UI_NAME "Cutter")
 SET(ORGANIZATION "DV")
 SET(LOG_PATH ${ORGANIZATION}/${PROJECT_NAME}/logs)
